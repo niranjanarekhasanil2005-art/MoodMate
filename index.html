@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoodMate — Your Feelings, Your Space</title>
+  <meta name="description" content="MoodMate is your personal mood companion. Type your thoughts and instantly discover your mood with supportive, gentle insights.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient pastel background glow circles -->
+  <div class="glow-orb orb-lavender"></div>
+  <div class="glow-orb orb-pink"></div>
+  <div class="glow-orb orb-peach"></div>
+
+  <main class="app-container">
+    <div class="mood-card">
+      <!-- Header Section -->
+      <header class="app-header">
+        <div class="badge">🌸 Your Gentle Mood Companion</div>
+        <h1 class="app-title">MoodMate — Your Feelings, Your Space</h1>
+        <p class="app-subtitle">Share what's on your mind right now, and let's check in with your heart.</p>
+      </header>
+
+      <!-- Input Section -->
+      <section class="input-section">
+        <label for="moodInput" class="input-label">How are you feeling right now?</label>
+        <div class="textarea-wrapper">
+          <textarea
+            id="moodInput"
+            placeholder="Type a sentence here... (e.g. 'I just aced my exam and I am so thrilled!' or 'Everything feels a bit overwhelming today.')"
+            rows="3"
+            maxlength="300"
+          ></textarea>
+          <span id="charCount" class="char-count">0 / 300</span>
+        </div>
+
+        <!-- Quick Idea Chips for Easy Testing -->
+        <div class="prompt-chips-wrapper">
+          <span class="chips-label">Try an example:</span>
+          <div class="prompt-chips">
+            <button type="button" class="chip-btn" data-text="I had the most wonderful day with my best friends!">✨ Joyful day</button>
+            <button type="button" class="chip-btn" data-text="I am so worried and stressed about tomorrow's presentation.">😰 Anxious</button>
+            <button type="button" class="chip-btn" data-text="I cannot wait for the weekend trip, so thrilled!">🤩 Excited</button>
+            <button type="button" class="chip-btn" data-text="I am completely drained and have no energy left.">🥱 Exhausted</button>
+          </div>
+        </div>
+
+        <!-- Action Button -->
+        <button id="predictBtn" class="primary-btn" type="button">
+          <span class="btn-text">Predict My Mood</span>
+          <span class="btn-icon">✨</span>
+        </button>
+      </section>
+
+      <!-- Alert / Graceful Empty Message -->
+      <div id="alertBox" class="alert-box hidden" role="alert">
+        <span class="alert-icon">💭</span>
+        <span id="alertMessage" class="alert-text">Please share a few words about how you are feeling first!</span>
+      </div>
+
+      <!-- Result Section -->
+      <section id="resultSection" class="result-section hidden" aria-live="polite">
+        <div class="result-card">
+          <div class="emoji-display" id="moodEmoji">✨</div>
+          <div class="result-details">
+            <span class="mood-badge" id="moodName">Happy</span>
+            <p class="mood-message" id="moodMessage">Keep shining! You're doing amazing.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer Note -->
+      <footer class="app-footer">
+        <p>100% private & runs directly in your browser • Crafted with 💜 and 💖</p>
+      </footer>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

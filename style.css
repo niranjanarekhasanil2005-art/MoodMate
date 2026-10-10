@@ -1,0 +1,451 @@
+/* ==========================================================
+   MoodMate — Design System & Styles
+   Palette: Pastel Lavender, Rose & Soft Blush Pink
+   ========================================================== */
+
+:root {
+  /* Pastel Lavender & Pink Palette */
+  --bg-gradient-start: #F7F0FF;
+  --bg-gradient-mid: #FDE8F3;
+  --bg-gradient-end: #FFF5F7;
+
+  --lavender-soft: #EDE4FF;
+  --lavender-accent: #B794F6;
+  --lavender-deep: #7C3AED;
+  
+  --pink-soft: #FDE2EE;
+  --pink-accent: #F472B6;
+  --pink-deep: #DB2777;
+
+  --text-primary: #3B1B54;
+  --text-secondary: #745887;
+  --text-muted: #9E8AA8;
+
+  --card-bg: rgba(255, 255, 255, 0.78);
+  --card-border: rgba(255, 255, 255, 0.9);
+  --input-bg: rgba(255, 255, 255, 0.9);
+  --input-border: #E9D5FF;
+  --input-focus: #C084FC;
+
+  --shadow-soft: 0 10px 35px -5px rgba(183, 148, 246, 0.2), 0 8px 16px -6px rgba(244, 114, 182, 0.15);
+  --shadow-hover: 0 16px 40px -4px rgba(183, 148, 246, 0.3), 0 10px 20px -5px rgba(244, 114, 182, 0.25);
+  --radius-xl: 28px;
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-full: 9999px;
+  
+  --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Base Reset & Layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 50%, var(--bg-gradient-end) 100%);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+  padding: 24px 16px;
+}
+
+/* Ambient Glowing Background Orbs */
+.glow-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.6;
+  animation: float 14s ease-in-out infinite alternate;
+}
+
+.orb-lavender {
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, #D8B4FE 0%, rgba(216, 180, 254, 0) 70%);
+  top: -60px;
+  left: -80px;
+}
+
+.orb-pink {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, #FBCFE8 0%, rgba(251, 207, 232, 0) 70%);
+  bottom: -80px;
+  right: -90px;
+  animation-delay: -5s;
+}
+
+.orb-peach {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #FEE2E2 0%, rgba(254, 226, 226, 0) 70%);
+  top: 45%;
+  left: 60%;
+  animation-delay: -9s;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(30px, -25px) scale(1.08);
+  }
+  100% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+/* Main Container */
+.app-container {
+  width: 100%;
+  max-width: 620px;
+  z-index: 1;
+}
+
+/* Glassmorphism Mood Card */
+.mood-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  padding: 40px 36px;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mood-card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* Header Styles */
+.app-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--lavender-deep);
+  background: var(--lavender-soft);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  margin-bottom: 14px;
+  letter-spacing: 0.2px;
+  box-shadow: 0 2px 6px rgba(124, 58, 237, 0.08);
+}
+
+.app-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1.25;
+  background: linear-gradient(135deg, #4C1D95 0%, #9333EA 50%, #DB2777 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 8px;
+}
+
+.app-subtitle {
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Input Section */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.input-label {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.textarea-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: var(--input-bg);
+  border: 1.5px solid var(--input-border);
+  border-radius: var(--radius-lg);
+  padding: 16px 18px 30px;
+  resize: vertical;
+  min-height: 100px;
+  outline: none;
+  transition: all 0.25s ease;
+  line-height: 1.5;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+textarea:focus {
+  border-color: var(--input-focus);
+  background: #FFFFFF;
+  box-shadow: 0 0 0 4px rgba(192, 132, 252, 0.25);
+}
+
+textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.85;
+}
+
+.char-count {
+  position: absolute;
+  right: 14px;
+  bottom: 10px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+/* Prompt Chips */
+.prompt-chips-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chips-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.prompt-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip-btn {
+  background: rgba(243, 232, 255, 0.7);
+  border: 1px solid rgba(216, 180, 254, 0.8);
+  color: #6B21A8;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chip-btn:hover {
+  background: #E9D5FF;
+  border-color: #C084FC;
+  transform: translateY(-1px);
+}
+
+.chip-btn:active {
+  transform: translateY(0);
+}
+
+/* Primary Action Button */
+.primary-btn {
+  background: linear-gradient(135deg, #B794F6 0%, #F472B6 100%);
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: 15px 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 8px 20px -3px rgba(183, 148, 246, 0.45);
+  transition: all 0.25s ease;
+  margin-top: 6px;
+}
+
+.primary-btn:hover {
+  background: linear-gradient(135deg, #A855F7 0%, #EC4899 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -2px rgba(183, 148, 246, 0.6);
+}
+
+.primary-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 12px -2px rgba(183, 148, 246, 0.4);
+}
+
+.btn-icon {
+  font-size: 1.15rem;
+  transition: transform 0.25s ease;
+}
+
+.primary-btn:hover .btn-icon {
+  transform: rotate(15deg) scale(1.15);
+}
+
+/* Alert Box (Empty State Handling) */
+.alert-box {
+  background: #FFF1F2;
+  border: 1.5px solid #FECDD3;
+  color: #BE123C;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  animation: shake 0.4s ease-in-out;
+}
+
+.alert-icon {
+  font-size: 1.25rem;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-3px); }
+}
+
+/* Result Section */
+.result-section {
+  margin-top: 24px;
+}
+
+.result-card {
+  background: linear-gradient(135deg, rgba(245, 238, 255, 0.85) 0%, rgba(254, 235, 246, 0.85) 100%);
+  border: 1.5px solid rgba(226, 203, 255, 0.8);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 6px 20px rgba(183, 148, 246, 0.15);
+  animation: popUp 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.emoji-display {
+  font-size: 3.5rem;
+  min-width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 6px 16px rgba(183, 148, 246, 0.2);
+  user-select: none;
+  animation: bounceEmoji 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes bounceEmoji {
+  0% { transform: scale(0.3) rotate(-15deg); }
+  60% { transform: scale(1.15) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.result-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.mood-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: #FFFFFF;
+  color: var(--lavender-deep);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.mood-message {
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.45;
+}
+
+/* Footer */
+.app-footer {
+  text-align: center;
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px dashed rgba(183, 148, 246, 0.3);
+}
+
+.app-footer p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Utility */
+.hidden {
+  display: none !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 540px) {
+  .mood-card {
+    padding: 28px 20px;
+    border-radius: 22px;
+  }
+
+  .app-title {
+    font-size: 1.45rem;
+  }
+
+  .result-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
+    padding: 20px;
+  }
+
+  .mood-badge {
+    align-self: center;
+  }
+}
